@@ -1,0 +1,34 @@
+{
+  "name": "jss-module-loader",
+  "version": "1.0.0",
+  "description": "JSS Loader for Webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmitrif/jss-loader.git"
+  },
+  "author": {
+    "name": "Dmitri Farkov"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dmitrif/jss-loader/issues"
+  },
+  "homepage": "https://github.com/dmitrif/jss-loader#readme",
+  "dependencies": {
+    "loader-utils": "^0.2.11",
+    "serialize-javascript": "^1.0.0"
+  },
+  "peerDependencies": {
+    "jss": "*"
+  },
+  "maintainers": [
+    {
+      "name": "Dmitri Farkov",
+      "email": "dmitrif@pss-digital.com"
+    }
+  ]
+}
