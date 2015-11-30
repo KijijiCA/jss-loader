@@ -25,9 +25,9 @@ module.exports = function(content) {
 
     var styles = sheet.createStyleSheet(rules[constKey]);
 
-    return serialize({
+    return "module.exports = " + serialize({
       classes: styles.classes,
       styles: styles.toString()
-    });
+    }) + ";";
   }
 };
