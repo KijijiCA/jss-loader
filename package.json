@@ -1,49 +1,9 @@
 {
-  "_args": [
-    [
-      {
-        "name": "jss-module-loader",
-        "raw": "jss-module-loader@1.2.0",
-        "rawSpec": "1.2.0",
-        "scope": null,
-        "spec": "1.2.0",
-        "type": "version"
-      },
-      "/Users/dfarkov/Projects/core/fes"
-    ]
-  ],
-  "_from": "jss-module-loader@1.0.1",
-  "_id": "jss-module-loader@1.0.1",
-  "_inCache": true,
-  "_installable": true,
-  "_location": "/jss-module-loader",
-  "_npmUser": {
-    "email": "dfarkov@kijiji.ca",
-    "name": "deployment"
-  },
-  "_npmVersion": "1.4.3",
-  "_phantomChildren": {},
-  "_requested": {
-    "name": "jss-module-loader",
-    "raw": "jss-module-loader@1.0.1",
-    "rawSpec": "1.0.1",
-    "scope": null,
-    "spec": "1.0.1",
-    "type": "version"
-  },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "http://nexus.kjdev.ca/content/groups/npmall/jss-module-loader/-/jss-module-loader-1.0.1.tgz",
-  "_shasum": "bd7f0868e2bc3bcaeda6873b8f84769bd9961363",
-  "_shrinkwrap": null,
-  "_spec": "jss-module-loader@1.0.1",
-  "_where": "/Users/dfarkov/Projects/core/fes",
   "author": {
     "name": "Dmitri Farkov"
   },
   "bugs": {
-    "url": "https://github.com/dmitrif/jss-loader/issues"
+    "url": "https://github.com/KijijiCA/jss-loader/issues"
   },
   "dependencies": {
     "loader-utils": "^0.2.11",
@@ -51,11 +11,7 @@
   },
   "description": "JSS Loader for Webpack",
   "devDependencies": {},
-  "dist": {
-    "shasum": "bd7f0868e2bc3bcaeda6873b8f84769bd9961363",
-    "tarball": "http://nexus.kjdev.ca/content/groups/npmall/jss-module-loader/-/jss-module-loader-1.0.1.tgz"
-  },
-  "homepage": "https://github.com/dmitrif/jss-loader#readme",
+  "homepage": "https://github.com/KijijiCA/jss-loader#readme",
   "license": "MIT",
   "main": "index.js",
   "maintainers": [
@@ -69,14 +25,13 @@
   "peerDependencies": {
     "jss": "*"
   },
-  "readme": "# JSS Loader for Webpack\nCreate your styles in the [JSS](https://github.com/jsstyles/jss) format and use this loader to load the modules. Used in combination with the JSS-Text-Extractor to extract the generated CSS as a separate bundle (to avoid FOUT).\n\nBased heavily on [the original JSS loader](https://github.com/markdalgleish/jss-loader). However, the original did not allow for a mechanism to extract the generated CSS.\n\n## Install\n\n```bash\n$ npm install --save jss-loader jss\n```\n\n## Usage\n\nTBD\n\n### JSS Plugins\n\nIn order to use [JSS plugins](https://github.com/jsstyles/jss/blob/master/readme.md#plugins), simply define the `jssLoader.plugins` option in your [Webpack config](http://webpack.github.io/docs/configuration.html).\n\n``` javascript\nmodule.exports = {\n  module: {\n    loaders: [...]\n  },\n  jssLoader:\n    plugins: [\n      require('jss-nested'),\n      require('jss-extend'),\n      require('jss-vendor-prefixer'),\n      require('jss-camel-case'),\n      require('jss-props-sort'),\n      require('jss-px')\n    ]\n};\n```\n\nIf required, you can change the options key with the `config` query parameter: `\"css!jss?config=jssLoaderCustom\"`.\n\n## External Documentation\n\n[JSS](https://github.com/jsstyles/jss)\n[Webpack: Using loaders](http://webpack.github.io/docs/using-loaders.html)\n\n## License\n[MIT License](http://www.mit-license.org/)\n",
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dmitrif/jss-loader.git"
+    "url": "git+https://github.com/KijijiCA/jss-loader.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "1.0.1"
+  "version": "1.2.0"
 }
