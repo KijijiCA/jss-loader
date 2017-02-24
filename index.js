@@ -1,33 +1,15 @@
-var jss = require('jss');
-var loaderUtils = require('loader-utils');
-var serialize = require('serialize-javascript');
+var omitRequest = require.resolve('./omit');
+var loaderRequest = require.resolve('./loader');
 
-module.exports = function(content) {
-  var sheet, plugins, rules;
-  var query = loaderUtils.parseQuery(this.query);
-  var configKey = query.config || 'jssLoader';
-  var constKey = query.constKey || 'Styles';
-
-  this.cacheable();
-
-  if (this.inputValue) {
-    return null, this.inputValue;
-  } else {
-    plugins = this.options[configKey] && this.options[configKey].plugins || [];
-
-    sheet = jss.create();
-
-    plugins.forEach(function(plugin) {
-      sheet = sheet.use(plugin());
-    });
-
-    rules = this.exec(content, this.resource);
-
-    var styles = sheet.createStyleSheet(rules[constKey]);
-
-    return "module.exports = " + serialize({
-      classes: styles.classes,
-      styles: styles.toString()
-    }) + ";";
+module.exports = function jssLoader(post, pre) {
+  if (Array.isArray(post)) {
+    post = post.join('!');
   }
-};
+
+  if (Array.isArray(pre)) {
+    pre = pre.join('!');
+  }
+
+  console.log([omitRequest, post, loaderRequest, pre || ''].join('!'));
+  return [omitRequest, post, loaderRequest, pre || ''].join('!');
+}

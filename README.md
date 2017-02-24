@@ -11,7 +11,24 @@ $ npm install --save jss-loader jss
 
 ## Usage
 
-TBD
+In your webpack config:
+
+`import jssLoader from 'jss-module-loader';
+
+...
+loader: jssLoader(/* postLoaders */, /* preloaders */);
+...
+`
+
+With Extract-text-webpack-plugin:
+
+`import jssLoader from 'jss-module-loader';
+
+...
+loader: jssLoader([ExtractTextWebpackPlugin.loader(), /* postLoaders */], /* preloaders */);
+...
+`
+
 
 ### JSS Plugins
 
