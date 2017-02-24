@@ -3,6 +3,8 @@ Create your styles in the [JSS](https://github.com/jsstyles/jss) format and use 
 
 Based heavily on [the original JSS loader](https://github.com/markdalgleish/jss-loader). However, the original did not allow for a mechanism to extract the generated CSS.
 
+Compatibility with Extract-text-webpack-plugin borrowed heavily from [Styling](https://github.com/andreypopp/styling); Big shout-out to @andreypopp wouldn't have been able to figure out the proper loader order with multipel child compilers without him.
+
 ## Install
 
 ```bash
