@@ -96,7 +96,8 @@ function produce(loader, request, callback) {
 
   var query = loaderUtils.parseQuery(this.query);
   var configKey = query.config || 'jssLoader';
-  var constKey = query.constKey || 'Styles';
+  var useDefault = query.useDefault || true;
+  var constKey = useDefault ? 'default' : (query.constKey || 'Styles');
   var jssPlugins = loader.options[configKey] && loader.options[configKey].plugins || [];
 
   childCompiler.runAsChild(function(error, entries, compilation) {
