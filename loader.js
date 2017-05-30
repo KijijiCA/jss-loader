@@ -97,7 +97,8 @@ function produce(loader, request, callback) {
   var query = loaderUtils.parseQuery(this.query);
   var configKey = query.config || 'jssLoader';
   var useDefault = query.useDefault || true;
-  var constKey = useDefault ? 'default' : (query.constKey || 'Styles');
+  var warnOnNonDefaultUsage = query.warnOnNonDefaultUsage || true;
+  var constKey = query.constKey || 'Styles';
   var jssPlugins = loader.options[configKey] && loader.options[configKey].plugins || [];
 
   childCompiler.runAsChild(function(error, entries, compilation) {
@@ -127,8 +128,26 @@ function produce(loader, request, callback) {
       sheet = sheet.use(plugin());
     });
 
-    var rules = loader.exec(source, request);
-    var styles = sheet.createStyleSheet(rules[constKey]);
+    var rules = loader.exec(source, request);  
+    var scopedRules;
+
+    if (useDefault) {
+      scopedRules = rules['default'];
+    }
+
+    if (scopedRules === undefined) {
+      if (warnOnNonDefaultUsage) {
+        console.error('[JSS-MODULE-LOADER]', 'No default export found, please refactor!', request);
+      }
+
+      scopedRules = rules[constKey];
+
+      if (scopedRules === undefined) {
+        console.error('[JSS-MODULE-LOADER]', 'No named export found, please refactor! Name expected: ', constKey, request); 
+      }
+    }
+
+    var styles = sheet.createStyleSheet(scopedRules);
 
     var result = "module.exports = " + serialize({
       classes: styles.classes,
