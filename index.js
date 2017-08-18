@@ -4,6 +4,7 @@ var jss = require('jss');
 var fs = require('fs');
 var loaderUtils = require('loader-utils');
 var serialize = require('serialize-javascript');
+var murmurhash = require('murmurhash');
 
 var NodeTemplatePlugin = require("webpack/lib/node/NodeTemplatePlugin");
 var NodeTargetPlugin = require("webpack/lib/node/NodeTargetPlugin");
@@ -15,6 +16,15 @@ var extractTextWebpackPluginKey;
 try {
   extractTextWebpackPluginKey = path.dirname(require.resolve('extract-jss-webpack-plugin'));
 } catch (error) {}
+
+const createGenerateClassName = () => {
+  return function(rule, sheet) {
+    const hash = murmurhash(JSON.stringify(rule.style));
+
+    return `${rule.key}-${hash}`;
+  }
+};
+
 
 module.exports = function jss(content) {
   if (this[__dirname] === false) {
@@ -96,7 +106,9 @@ function produce(loader, request, callback) {
   var constKey = options.constKey || 'Styles';
   var jssPlugins = options.plugins || [];
 
-  var sheet = jss.create();
+  var sheet = jss.create({
+    createGenerateClassName
+  });
 
   jssPlugins.forEach(function(plugin) {
     sheet = sheet.use(plugin());

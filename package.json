@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "loader-utils": "^1.1.0",
+    "murmurhash": "0.0.2",
     "serialize-javascript": "^1.0.0"
   },
   "description": "JSS Loader for Webpack",
@@ -33,5 +34,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "2.0.2"
+  "version": "2.1.2"
 }
