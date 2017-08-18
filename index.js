@@ -96,10 +96,10 @@ function produce(loader, request, callback) {
   var constKey = options.constKey || 'Styles';
   var jssPlugins = options.plugins || [];
 
-  var jss = jss.create();
+  var sheet = jss.create();
 
   jssPlugins.forEach(function(plugin) {
-    jss = jss.use(plugin());
+    sheet = sheet.use(plugin());
   });
 
 
@@ -143,7 +143,7 @@ function produce(loader, request, callback) {
       }
     }
 
-    var styles = jss.createStyleSheet(scopedRules);
+    var styles = sheet.createStyleSheet(scopedRules);
 
     var result = "module.exports = " + serialize(Object.assign({}, styles.classes, {
       __compiledStyles: styles.toString()
